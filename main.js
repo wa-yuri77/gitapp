@@ -1,24 +1,88 @@
-import './style.css'
-import javascriptLogo from './javascript.svg'
-import viteLogo from '/vite.svg'
-import { setupCounter } from './counter.js'
+import './style.css';
+import { Amplify } from 'aws-amplify';
+import amplifyconfig from './src/amplifyconfiguration.json';
 
-document.querySelector('#app').innerHTML = `
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="${viteLogo}" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
-      <img src="${javascriptLogo}" class="logo vanilla" alt="JavaScript logo" />
-    </a>
-    <h1>Hello Vite!</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
-    <p class="read-the-docs">
-      Click on the Vite logo to learn more
-    </p>
-  </div>
-`
+import { generateClient } from 'aws-amplify/api';
+import { createTodo } from './src/graphql/mutations';
+import { listTodos } from './src/graphql/queries';
+import { onCreateTodo } from './src/graphql/subscriptions';
 
-setupCounter(document.querySelector('#counter'))
+Amplify.configure(amplifyconfig);
+
+const client = generateClient();
+
+const MutationButton = document.getElementById('MutationEventButton');
+const MutationResult = document.getElementById('MutationResult');
+const QueryResult = document.getElementById('QueryResult');
+const SubscriptionResult = document.getElementById('SubscriptionResult');
+
+async function addTodo() {
+    const todo = {
+        name: 'Use AppSync',
+        description: `Realtime and Offline (${new Date().toLocaleString()})`
+    };
+
+    return await client.graphql({
+        query: createTodo,
+        variables: {
+            input: todo
+        }
+    });
+}
+
+async function fetchTodos() {
+    try {
+        const response = await client.graphql({
+            query: listTodos
+        });
+
+        response.data.listTodos.items.map((todo, i) => {
+            QueryResult.innerHTML += `<p>${todo.name} - ${todo.description}</p>`;
+        });
+    } catch (e) {
+        console.log('Something went wrong', e);
+    }
+}
+
+MutationButton.addEventListener('click', (evt) => {
+    addTodo().then((evt) => {
+        MutationResult.innerHTML += `<p>${evt.data.createTodo.name} - ${evt.data.createTodo.description}</p>`;
+    });
+});
+
+function subscribeToNewTodos() {
+    client.graphql({ query: onCreateTodo }).subscribe({
+        next: (evt) => {
+            const todo = evt.data.onCreateTodo;
+            SubscriptionResult.innerHTML += `<p>${todo.name} - ${todo.description}</p>`;
+        }
+    });
+}
+
+subscribeToNewTodos();
+fetchTodos();
+
+// import './style.css'
+// import javascriptLogo from './javascript.svg'
+// import viteLogo from '/vite.svg'
+// import { setupCounter } from './counter.js'
+//
+// document.querySelector('#app').innerHTML = `
+//   <div>
+//     <a href="https://vitejs.dev" target="_blank">
+//       <img src="${viteLogo}" class="logo" alt="Vite logo" />
+//     </a>
+//     <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
+//       <img src="${javascriptLogo}" class="logo vanilla" alt="JavaScript logo" />
+//     </a>
+//     <h1>Hello Vite!</h1>
+//     <div class="card">
+//       <button id="counter" type="button"></button>
+//     </div>
+//     <p class="read-the-docs">
+//       Click on the Vite logo to learn more
+//     </p>
+//   </div>
+// `
+//
+// setupCounter(document.querySelector('#counter'))
