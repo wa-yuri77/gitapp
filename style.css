@@ -11,11 +11,12 @@ h1 {
 }
 hr {
   height: 1px;
-  background: lightgray;
+  background:#ff9900;
   border: none;
 }
 .app {
   width: 100%;
+  color: blue;
 }
 .app-header {
   color: white;
