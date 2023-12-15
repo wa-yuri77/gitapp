@@ -1,0 +1,73 @@
+<HTML>
+  <head>
+    <style>
+        body {
+           background-color: #486d46;            /* 背景色 */
+           background-image: url("stadium2.png"); /* 画像 */
+           background-repeat: no-repeat;           /*繰り返し*/
+           background-size: contain;               /* 全画面 */
+           background-attachment: fixed;         /* 固定 */
+           background-position: center center;   /* 縦横中央 */
+        }
+        .position{
+            background-color: white;
+        }
+        /* モーダルウィンドウ要素 */
+        .modal_contents {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index:100;
+        width: 100%;
+        height: 100%;
+        width: 100%;
+        }
+        /* モーダルウィンドウの背景要素 */
+        .modal_contents_bg {
+        background: rgba(0,0,0,.8);
+        width: 100%;
+        height: 100%;
+        }
+        /* モーダルウィンドウの中身*/
+        .modal_contents_wrap {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        background-color: #fff;
+        width: 50%;
+        height: 50%;
+        margin: auto;
+        transform: translate(-50%,-50%);
+        padding: 30px;
+        }
+        /* モーダルウィンドウを閉じる要素 */
+        .modal_close_btn {
+        display: inline-block;
+        cursor: pointer;
+        margin-top: 10px;
+        }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+        <img v-bind:src="path" alt="ロゴ画像"
+          class="position"
+          v-on:click="open"
+          width="90" height="65"
+          style="position:absolute;top:500px;left:400px;"
+          />
+        <!--  モーダルウィンドウ  -->
+            <div v-show="show" class="modal_contents">
+        <!-- モーダルウィンドウの背景 -->
+            <div v-on:click="close" class="modal_contents_bg"></div>
+        <!--   モーダルウィンドウの中身   -->
+            <img v-bind:src="path" alt="グラフ" class="modal_contents_wrap"/>
+        <!--   モーダルウィンドウを閉じる   -->
+                <div v-on:click="close" class="modal_close_btn">閉じる</div>
+            </div>
+    </div>
+      <script src="https://cdn.jsdelivr.net/npm/vue@3.2.29/dist/vue.global.js"></script>
+      <script src="/Users/shoichiro-u/Desktop/Vue-dustbox/event_click.js"></script>
+  </body>
+
+</HTML>
