@@ -50,10 +50,10 @@ async function fetchCountTodos() {
     try {
         var values = {
             "Bottle": 0,
-            "Can": 0,
-            "Bin": 0,
-            "Burnable": 0,
-            "Other": 0
+            "Bottle": 0,
+            "Bottle": 0,
+            "Bottle": 0,
+            "Bottle": 0
         };
 
         const promises = Object.keys(values).map(async key => {
@@ -74,6 +74,7 @@ async function fetchCountTodos() {
         });
 
         await Promise.all(promises);
+        console.log(values);
 
         return values;
     } catch (e) {
