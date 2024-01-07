@@ -5,6 +5,7 @@
   <title>Amplify</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link href="style.css" rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js" type="text/javascript"></script>
 </head>
 
 <body>
@@ -13,6 +14,10 @@
     <h1>Welcome to Amplify</h1>
   </div>
   <div class="app-body">
+    <h1>Visualize</h1>
+    <canvas id="graph-area" height="450" width="device-width">
+    </canvas>
+    <hr />
     <h1>Mutation Results</h1>
     <button id="MutationEventButton">Add data</button>
     <div id="MutationResult"></div>
