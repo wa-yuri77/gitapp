@@ -57,12 +57,12 @@ async function fetchCountTodos() {
         };
 
         const promises = Object.keys(values).map(async key => {
-            alert(values[key]);
-            console.log(key);
+            // alert(values[key]);
+            // console.log(key);
             const response = await client.graphql({
                 query: listTodos,
                 variables: {
-                    filter: { name: { eq: key } },
+                    filter: { label: { eq: key } },
                     limit: null,
                     nextToken: null
                 }
