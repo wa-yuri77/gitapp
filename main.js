@@ -49,42 +49,44 @@ async function fetchTodos() {
 
 async function fetchCountTodos() {
     try {
-        var values=[];
-        for(var i=0;i<5;i++){
-            const response = await client.graphql({
+        var values={
+            "Bottle":0,
+            "Can":0,
+            "Bin":0,
+            "Burnable":0,
+            "Other":0
+        };
+
+        // for(var i=0;i<5;i++){
+        //     const response = await client.graphql({
+        //         query: listTodos,
+        //         variables: {
+        //             filter: {name:{ eq: 'Use AppSync' }},
+        //             limit: null, // 取得するアイテムの数を制限する場合
+        //             nextToken: null // ページネーションのためのトークンなど
+        //           }
+
+        //     });
+        //     const items = response.data.listTodos.items;
+        //     // alert(items.length);
+        //     values[i]=items.length;
+        // }
+        Object.keys(values).forEach(key => {
+            const response = client.graphql({
                 query: listTodos,
                 variables: {
-                    filter: {name:{ eq: 'Use AppSync' }},
+                    filter: {name:{ eq: key }},
                     limit: null, // 取得するアイテムの数を制限する場合
                     nextToken: null // ページネーションのためのトークンなど
                   }
-
-            });
+             });
             const items = response.data.listTodos.items;
             // alert(items.length);
-            values[i]=items.length;
-        }
-            // const input ={
-            //     name: { eq: 'Use AppSync' }
-            // }
-            // const response = await client.graphql({
-            //     query: listTodos,
-            //     variables: {
-            //         filter: input,
-            //         limit: null, // 取得するアイテムの数を制限する場合
-            //         nextToken: null // ページネーションのためのトークンなど
-            //     }
-            // });
-        
-            // const items = response.data.listTodos.items;
-            // alert(items.length);
-            // values[i]=[items.length];
-            // response.data.listTodos.items.map((todo, i) => {
-            //     QueryResult.innerHTML += `<p>${todo.name} - ${todo.description}</p>`;
-            // });
-        
-        return values;
-        
+            values[key]=items.length;
+
+            return values;
+        });
+
     } catch (e) {
         console.log('Something went wrong', e);
     }
@@ -157,31 +159,31 @@ val.then(result => {
     console.log(result)
     var pieData = [
         {
-            value: result[0],            // 値
+            value: result["Bottle"],            // 値
             color:"#F7464A",       // 色
             highlight: "#FF5A5E",  // マウスが載った際の色
             label: "ペットボトル"        // ラベル
         },
         {
-            value: result[1],
+            value: result["Can"],
             color: "#41C44E",
             highlight: "#6CD173",
             label: "カン"
         },
         {
-            value: result[2],
+            value: result["Bin"],
             color: "#FDB45C",
             highlight: "#FFC870",
             label: "ビン"
         },
         {
-            value: result[3],
+            value: result["Burnable"],
             color: "#AA49B8",
             highlight: "#C583CF",
             label: "可燃ごみ"
         },
         {
-            value: result[4],
+            value: result["Other"],
             color: "#4D5360",
             highlight: "#616774",
             label: "その他"
