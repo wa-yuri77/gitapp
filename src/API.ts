@@ -6,11 +6,17 @@ export type CreateTodoInput = {
   id?: string | null,
   name: string,
   description?: string | null,
+  image?: string | null,
+  label?: string | null,
+  confidence?: number | null,
 };
 
 export type ModelTodoConditionInput = {
   name?: ModelStringInput | null,
   description?: ModelStringInput | null,
+  image?: ModelStringInput | null,
+  label?: ModelStringInput | null,
+  confidence?: ModelIntInput | null,
   and?: Array< ModelTodoConditionInput | null > | null,
   or?: Array< ModelTodoConditionInput | null > | null,
   not?: ModelTodoConditionInput | null,
@@ -56,11 +62,26 @@ export type ModelSizeInput = {
   between?: Array< number | null > | null,
 };
 
+export type ModelIntInput = {
+  ne?: number | null,
+  eq?: number | null,
+  le?: number | null,
+  lt?: number | null,
+  ge?: number | null,
+  gt?: number | null,
+  between?: Array< number | null > | null,
+  attributeExists?: boolean | null,
+  attributeType?: ModelAttributeTypes | null,
+};
+
 export type Todo = {
   __typename: "Todo",
   id: string,
   name: string,
   description?: string | null,
+  image?: string | null,
+  label?: string | null,
+  confidence?: number | null,
   createdAt: string,
   updatedAt: string,
 };
@@ -69,6 +90,9 @@ export type UpdateTodoInput = {
   id: string,
   name?: string | null,
   description?: string | null,
+  image?: string | null,
+  label?: string | null,
+  confidence?: number | null,
 };
 
 export type DeleteTodoInput = {
@@ -79,6 +103,9 @@ export type ModelTodoFilterInput = {
   id?: ModelIDInput | null,
   name?: ModelStringInput | null,
   description?: ModelStringInput | null,
+  image?: ModelStringInput | null,
+  label?: ModelStringInput | null,
+  confidence?: ModelIntInput | null,
   and?: Array< ModelTodoFilterInput | null > | null,
   or?: Array< ModelTodoFilterInput | null > | null,
   not?: ModelTodoFilterInput | null,
@@ -110,6 +137,9 @@ export type ModelSubscriptionTodoFilterInput = {
   id?: ModelSubscriptionIDInput | null,
   name?: ModelSubscriptionStringInput | null,
   description?: ModelSubscriptionStringInput | null,
+  image?: ModelSubscriptionStringInput | null,
+  label?: ModelSubscriptionStringInput | null,
+  confidence?: ModelSubscriptionIntInput | null,
   and?: Array< ModelSubscriptionTodoFilterInput | null > | null,
   or?: Array< ModelSubscriptionTodoFilterInput | null > | null,
 };
@@ -144,6 +174,18 @@ export type ModelSubscriptionStringInput = {
   notIn?: Array< string | null > | null,
 };
 
+export type ModelSubscriptionIntInput = {
+  ne?: number | null,
+  eq?: number | null,
+  le?: number | null,
+  lt?: number | null,
+  ge?: number | null,
+  gt?: number | null,
+  between?: Array< number | null > | null,
+  in?: Array< number | null > | null,
+  notIn?: Array< number | null > | null,
+};
+
 export type CreateTodoMutationVariables = {
   input: CreateTodoInput,
   condition?: ModelTodoConditionInput | null,
@@ -155,6 +197,9 @@ export type CreateTodoMutation = {
     id: string,
     name: string,
     description?: string | null,
+    image?: string | null,
+    label?: string | null,
+    confidence?: number | null,
     createdAt: string,
     updatedAt: string,
   } | null,
@@ -171,6 +216,9 @@ export type UpdateTodoMutation = {
     id: string,
     name: string,
     description?: string | null,
+    image?: string | null,
+    label?: string | null,
+    confidence?: number | null,
     createdAt: string,
     updatedAt: string,
   } | null,
@@ -187,6 +235,9 @@ export type DeleteTodoMutation = {
     id: string,
     name: string,
     description?: string | null,
+    image?: string | null,
+    label?: string | null,
+    confidence?: number | null,
     createdAt: string,
     updatedAt: string,
   } | null,
@@ -202,6 +253,9 @@ export type GetTodoQuery = {
     id: string,
     name: string,
     description?: string | null,
+    image?: string | null,
+    label?: string | null,
+    confidence?: number | null,
     createdAt: string,
     updatedAt: string,
   } | null,
@@ -221,6 +275,9 @@ export type ListTodosQuery = {
       id: string,
       name: string,
       description?: string | null,
+      image?: string | null,
+      label?: string | null,
+      confidence?: number | null,
       createdAt: string,
       updatedAt: string,
     } | null >,
@@ -238,6 +295,9 @@ export type OnCreateTodoSubscription = {
     id: string,
     name: string,
     description?: string | null,
+    image?: string | null,
+    label?: string | null,
+    confidence?: number | null,
     createdAt: string,
     updatedAt: string,
   } | null,
@@ -253,6 +313,9 @@ export type OnUpdateTodoSubscription = {
     id: string,
     name: string,
     description?: string | null,
+    image?: string | null,
+    label?: string | null,
+    confidence?: number | null,
     createdAt: string,
     updatedAt: string,
   } | null,
@@ -268,6 +331,9 @@ export type OnDeleteTodoSubscription = {
     id: string,
     name: string,
     description?: string | null,
+    image?: string | null,
+    label?: string | null,
+    confidence?: number | null,
     createdAt: string,
     updatedAt: string,
   } | null,

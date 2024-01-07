@@ -13,6 +13,9 @@ export const getTodo = /* GraphQL */ `query GetTodo($id: ID!) {
     id
     name
     description
+    image
+    label
+    confidence
     createdAt
     updatedAt
     __typename
@@ -29,6 +32,9 @@ export const listTodos = /* GraphQL */ `query ListTodos(
       id
       name
       description
+      image
+      label
+      confidence
       createdAt
       updatedAt
       __typename

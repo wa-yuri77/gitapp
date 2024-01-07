@@ -13,6 +13,9 @@ export const onCreateTodo = /* GraphQL */ `subscription OnCreateTodo($filter: Mo
     id
     name
     description
+    image
+    label
+    confidence
     createdAt
     updatedAt
     __typename
@@ -27,6 +30,9 @@ export const onUpdateTodo = /* GraphQL */ `subscription OnUpdateTodo($filter: Mo
     id
     name
     description
+    image
+    label
+    confidence
     createdAt
     updatedAt
     __typename
@@ -41,6 +47,9 @@ export const onDeleteTodo = /* GraphQL */ `subscription OnDeleteTodo($filter: Mo
     id
     name
     description
+    image
+    label
+    confidence
     createdAt
     updatedAt
     __typename
