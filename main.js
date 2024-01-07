@@ -18,6 +18,7 @@ const SubscriptionResult = document.getElementById('SubscriptionResult');
 const PrintButton = document.getElementById("PrintDataEvent");
 const PrintResult=document.getElementById("DataResult");
 
+
 async function addTodo() {
     const todo = {
         name: 'Use AppSync',
@@ -39,6 +40,8 @@ async function fetchTodos() {
         });
 
         response.data.listTodos.items.map((todo, i) => {
+            console.log('name:', todo.name);
+            console.log('description:', todo.description);
             QueryResult.innerHTML += `<p>${todo.name} - ${todo.description}</p>-${i}`;
         });
     } catch (e) {
@@ -69,7 +72,7 @@ async function fetchCountTodos() {
             // alert(items.length);
             values[key]=items.length;
         }
-
+        
         
         return values;
         
@@ -139,15 +142,16 @@ function subscribeToNewTodos() {
     });
 }
 
+console.log('0');
 const val = fetchCountTodos();
 val.then(result => {
-    console.log(result)
+    console.warn('変数 value の値は:', result);
     var pieData = [
         {
-            value: result["Bottle"],            // 値
-            color:"#F7464A",       // 色
-            highlight: "#FF5A5E",  // マウスが載った際の色
-            label: "ペットボトル"        // ラベル
+            value: result["Bottle"],
+            color: "#F7464A",
+            highlight: "#FF5A5E",
+            label: "ペットボトル"
         },
         {
             value: result["Can"],
@@ -173,7 +177,6 @@ val.then(result => {
             highlight: "#616774",
             label: "その他"
         }
-        
     ];
     console.log(pieData);
     function DrawPieChart() {
@@ -183,7 +186,7 @@ val.then(result => {
     DrawPieChart();
     
 }).catch(error => {
-    console.error('Error:', error);
+    console.error('Errorghjkl;:', error);
 });
 
 
