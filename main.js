@@ -57,6 +57,8 @@ async function fetchCountTodos() {
         };
 
         const promises = Object.keys(values).map(async key => {
+            alert(values[key]);
+            console.log(key);
             const response = await client.graphql({
                 query: listTodos,
                 variables: {
@@ -175,7 +177,7 @@ async function processData() {
                 highlight: "#616774",
                 label: "その他"
             }
-            
+
         ];
 
         console.log(pieData);
