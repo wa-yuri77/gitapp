@@ -77,7 +77,7 @@ async function fetchCountTodos() {
  
             });
             const items = response.data.listTodos.items;
-            alert(response.data.listTodos.items.length);
+            // alert(response.data.listTodos.items.length);
             values[key]=items.length;
         }
         
@@ -295,7 +295,7 @@ function doReload() {
 window.addEventListener('load', function () {
 
     // ページ表示完了した5秒後にリロード
-    setTimeout(doReload, 5000);
+    setTimeout(doReload, 10000);
 });
 
 
