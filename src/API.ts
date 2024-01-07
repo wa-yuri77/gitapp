@@ -4,7 +4,7 @@
 
 export type CreateTodoInput = {
   id?: string | null,
-  name: string,
+  name?: string | null,
   description?: string | null,
   image?: string | null,
   label?: string | null,
@@ -76,8 +76,8 @@ export type ModelIntInput = {
 
 export type Todo = {
   __typename: "Todo",
-  id: string,
-  name: string,
+  id?: string | null,
+  name?: string | null,
   description?: string | null,
   image?: string | null,
   label?: string | null,
@@ -194,8 +194,8 @@ export type CreateTodoMutationVariables = {
 export type CreateTodoMutation = {
   createTodo?:  {
     __typename: "Todo",
-    id: string,
-    name: string,
+    id?: string | null,
+    name?: string | null,
     description?: string | null,
     image?: string | null,
     label?: string | null,
@@ -213,8 +213,8 @@ export type UpdateTodoMutationVariables = {
 export type UpdateTodoMutation = {
   updateTodo?:  {
     __typename: "Todo",
-    id: string,
-    name: string,
+    id?: string | null,
+    name?: string | null,
     description?: string | null,
     image?: string | null,
     label?: string | null,
@@ -232,8 +232,8 @@ export type DeleteTodoMutationVariables = {
 export type DeleteTodoMutation = {
   deleteTodo?:  {
     __typename: "Todo",
-    id: string,
-    name: string,
+    id?: string | null,
+    name?: string | null,
     description?: string | null,
     image?: string | null,
     label?: string | null,
@@ -250,8 +250,8 @@ export type GetTodoQueryVariables = {
 export type GetTodoQuery = {
   getTodo?:  {
     __typename: "Todo",
-    id: string,
-    name: string,
+    id?: string | null,
+    name?: string | null,
     description?: string | null,
     image?: string | null,
     label?: string | null,
@@ -272,8 +272,8 @@ export type ListTodosQuery = {
     __typename: "ModelTodoConnection",
     items:  Array< {
       __typename: "Todo",
-      id: string,
-      name: string,
+      id?: string | null,
+      name?: string | null,
       description?: string | null,
       image?: string | null,
       label?: string | null,
@@ -292,8 +292,8 @@ export type OnCreateTodoSubscriptionVariables = {
 export type OnCreateTodoSubscription = {
   onCreateTodo?:  {
     __typename: "Todo",
-    id: string,
-    name: string,
+    id?: string | null,
+    name?: string | null,
     description?: string | null,
     image?: string | null,
     label?: string | null,
@@ -310,8 +310,8 @@ export type OnUpdateTodoSubscriptionVariables = {
 export type OnUpdateTodoSubscription = {
   onUpdateTodo?:  {
     __typename: "Todo",
-    id: string,
-    name: string,
+    id?: string | null,
+    name?: string | null,
     description?: string | null,
     image?: string | null,
     label?: string | null,
@@ -328,8 +328,8 @@ export type OnDeleteTodoSubscriptionVariables = {
 export type OnDeleteTodoSubscription = {
   onDeleteTodo?:  {
     __typename: "Todo",
-    id: string,
-    name: string,
+    id?: string | null,
+    name?: string | null,
     description?: string | null,
     image?: string | null,
     label?: string | null,
