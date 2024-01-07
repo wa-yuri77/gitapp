@@ -52,13 +52,14 @@ async function fetchTodos() {
 async function fetchCountTodos() {
     try {
         var values = {
-            "Bottle": 0,
-            "Can": 0,
-            "Bin": 0,
-            "Burnable": 0,
-            "Other": 0
+            'Bottle': 0,
+            'Can': 0,
+            'Bin': 0,
+            'Burnable': 0,
+            'Other': 0
         };
-        for(let key in values){
+        for(var key in values){
+            alert(key);
             console.log('key:', key);
             const response = await client.graphql({
                 query: listTodos,
