@@ -46,7 +46,6 @@ async function fetchTodos() {
     }
 }
 // ▼グラフの中身
-
 async function fetchCountTodos() {
     try {
         var values = {
@@ -66,11 +65,9 @@ async function fetchCountTodos() {
                     nextToken: null
                 }
             });
-            response.then(result => {
-                values[key]=result.data.listTodos.items.length;
-                alert(values[key]);
-            });
-
+            const items = response.data.listTodos.items;
+            values[key] = items.length;
+            return items.length; // itemsの長さを返すPromiseを作成
         });
 
         await Promise.all(promises);
@@ -143,54 +140,34 @@ function subscribeToNewTodos() {
 }
 
 
-const val = fetchCountTodos();
-console.log(val);
-val.then(result => {
-    console.log(result);
-    alert(result);
-    var pieData = [
-        {
-            value: result["Bottle"],            // 値
-            color:"#F7464A",       // 色
-            highlight: "#FF5A5E",  // マウスが載った際の色
-            label: "ペットボトル"        // ラベル"
-        },
-        {
-            value: result["Can"],
-            color: "#41C44E",
-            highlight: "#6CD173",
-            label: "カン"
-        },
-        {
-            value: result["Bin"],
-            color: "#FDB45C",
-            highlight: "#FFC870",
-            label: "ビン"
-        },
-        {
-            value: result["Burnable"],
-            color: "#AA49B8",
-            highlight: "#C583CF",
-            label: "可燃ごみ"
-        },
-        {
-            value: result["Other"],
-            color: "#4D5360",
-            highlight: "#616774",
-            label: "その他"
+async function processData() {
+    try {
+        const result = await fetchCountTodos();
+
+        var pieData = [
+            {
+                value: result["Bottle"],
+                color: "#F7464A",
+                highlight: "#FF5A5E",
+                label: "ペットボトル"
+            },
+            // ... （他のデータも同様に追加）
+        ];
+
+        console.log(pieData);
+
+        function DrawPieChart() {
+            var ctx = document.getElementById("graph-area").getContext("2d");
+            window.myPie = new Chart(ctx).Pie(pieData);
         }
         
-    ];
-    console.log(pieData);
-    function DrawPieChart() {
-    var ctx = document.getElementById("graph-area").getContext("2d");
-    window.myPie = new Chart(ctx).Pie(pieData);
-    };      
-    DrawPieChart();
-    
-}).catch(error => {
-    console.error('Error:', error);
-});
+        DrawPieChart();
+    } catch (error) {
+        console.error('Error:', error);
+    }
+}
+
+processData();
 
 
 // var pieData = [
