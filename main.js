@@ -68,8 +68,9 @@ async function fetchCountTodos() {
                 }
             });
             const items = response.data.listTodos.items;
+            console.log(items.length);
             values[key] = items.length;
-            return items.length; // itemsの長さを返すPromiseを作成
+            // return items.length; // itemsの長さを返すPromiseを作成
         });
 
         await Promise.all(promises);
