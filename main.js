@@ -59,7 +59,7 @@ async function fetchCountTodos() {
             const response = await client.graphql({
                 query: listTodos,
                 variables: {
-                    filter: {name:{ eq: key }},
+                    filter: {label:{ eq: key }},
                     limit: null, // 取得するアイテムの数を制限する場合
                     nextToken: null // ページネーションのためのトークンなど
                   }
