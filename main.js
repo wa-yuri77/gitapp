@@ -49,45 +49,30 @@ async function fetchTodos() {
 
 async function fetchCountTodos() {
     try {
-        var values={
-            "Bottle":0,
-            "Can":0,
-            "Bin":0,
-            "Burnable":0,
-            "Other":0
+        var values = {
+            "Bottle": 0,
+            "Can": 0,
+            "Bin": 0,
+            "Burnable": 0,
+            "Other": 0
         };
 
-        // for(var i=0;i<5;i++){
-        //     const response = await client.graphql({
-        //         query: listTodos,
-        //         variables: {
-        //             filter: {name:{ eq: 'Use AppSync' }},
-        //             limit: null, // 取得するアイテムの数を制限する場合
-        //             nextToken: null // ページネーションのためのトークンなど
-        //           }
-
-        //     });
-        //     const items = response.data.listTodos.items;
-        //     // alert(items.length);
-        //     values[i]=items.length;
-        // }
-        Object.keys(values).forEach(key => {
-            cosole.log(key);
-            const response = client.graphql({
+        const promises = Object.keys(values).map(async key => {
+            const response = await client.graphql({
                 query: listTodos,
                 variables: {
-                    filter: {name:{ eq: key }},
-                    limit: null, // 取得するアイテムの数を制限する場合
-                    nextToken: null // ページネーションのためのトークンなど
-                  }
-             });
+                    filter: { name: { eq: key } },
+                    limit: null,
+                    nextToken: null
+                }
+            });
             const items = response.data.listTodos.items;
-            // alert(items.length);
-            values[key]=items.length;
-
-            return values;
+            values[key] = items.length;
         });
 
+        await Promise.all(promises);
+
+        return values;
     } catch (e) {
         console.log('Something went wrong', e);
     }
