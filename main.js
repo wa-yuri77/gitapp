@@ -155,11 +155,12 @@ function subscribeToNewTodos() {
 
 
 const val = fetchCountTodos();
+alert(val);
 val.then(result => {
     console.log(result)
     var pieData = [
         {
-            value: result["Bottle"],            // 値
+            value: result[Bottle],            // 値
             color:"#F7464A",       // 色
             highlight: "#FF5A5E",  // マウスが載った際の色
             label: "ペットボトル"        // ラベル
