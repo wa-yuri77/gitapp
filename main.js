@@ -66,8 +66,11 @@ async function fetchCountTodos() {
                     nextToken: null
                 }
             });
-            const items = response.data.listTodos.items;
-            values[key] = items.length;
+            response.then(result => {
+                values[key]=result.data.listTodos.items.length;
+                alert(values[key]);
+            });
+
         });
 
         await Promise.all(promises);
