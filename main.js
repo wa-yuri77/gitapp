@@ -52,11 +52,11 @@ async function fetchTodos() {
 async function fetchCountTodos() {
     try {
         var values = {
-            'Bottle': 0,
-            'Can': 0,
-            'Bin': 0,
-            'Burnable': 0,
-            'Other': 0
+            'Bottle': 1,
+            'Can': 1,
+            'Bin': 1,
+            'Burnable': 1,
+            'Other': 1
         };
         for(var key in values){
             // alert(key);
