@@ -72,6 +72,7 @@ async function fetchCountTodos() {
         //     values[i]=items.length;
         // }
         Object.keys(values).forEach(key => {
+            cosole.log(key);
             const response = client.graphql({
                 query: listTodos,
                 variables: {
@@ -155,15 +156,16 @@ function subscribeToNewTodos() {
 
 
 const val = fetchCountTodos();
-alert(val);
+console.log(val);
 val.then(result => {
-    console.log(result)
+    console.log(result);
+    alert(result);
     var pieData = [
         {
-            value: result[Bottle],            // 値
+            value: result["Bottle"],            // 値
             color:"#F7464A",       // 色
             highlight: "#FF5A5E",  // マウスが載った際の色
-            label: "ペットボトル"        // ラベル
+            label: "ペットボトル"        // ラベル"
         },
         {
             value: result["Can"],
