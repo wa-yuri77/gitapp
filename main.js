@@ -151,7 +151,31 @@ async function processData() {
                 highlight: "#FF5A5E",
                 label: "ペットボトル"
             },
-            // ... （他のデータも同様に追加）
+            {
+                value: result["Can"],
+                color: "#41C44E",
+                highlight: "#6CD173",
+                label: "缶"
+            },
+            {
+                value: result["Bin"],
+                color: "#FDB45C",
+                highlight: "#FFC870",
+                label: "ビン"
+            },
+            {
+                value: result["Burnable"],
+                color: "#AA49B8",
+                highlight: "#C583CF",
+                label: "可燃ゴミ"
+            },
+            {
+                value: result["Other"],
+                color: "#4D5360",
+                highlight: "#616774",
+                label: "その他"
+            }
+            
         ];
 
         console.log(pieData);
