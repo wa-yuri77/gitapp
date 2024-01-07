@@ -45,7 +45,7 @@ async function fetchTodos() {
             QueryResult.innerHTML += `<p>${todo.name} - ${todo.description}</p>-${i}`;
         });
     } catch (e) {
-        console.log('Something went wrong', e);
+        console.log('aaSomething went wrong', e);
     }
 }
 // グラフの中身
@@ -77,7 +77,7 @@ async function fetchCountTodos() {
         return values;
         
     } catch (e) {
-        console.log('Something went wrong', e);
+        console.log('aSomething went wrong', e);
     }
 }
 
