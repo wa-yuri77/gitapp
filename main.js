@@ -49,51 +49,21 @@ async function fetchTodos() {
     }
 }
 // // グラフの中身
-// async function fetchCountTodos() {
-//     try {
-//         var values = {
-//             "Bottle": 0,
-//             "Can": 0,
-//             "Bin": 0,
-//             "Burnable": 0,
-//             "Other": 0
-//         };
-//         for(let key in values){
-//             const response = await client.graphql({
-//                 query: listTodos,
-//                 variables: {
-//                     filter: {label:{ eq: key }},
-//                     limit: null, // 取得するアイテムの数を制限する場合
-//                     nextToken: null // ページネーションのためのトークンなど
-//                   }
-
-//             });
-//             const items = response.data.listTodos.items;
-//             // alert(items.length);
-//             values[key]=items.length;
-//         }
-        
-        
-//         return values;
-        
-//     } catch (e) {
-//         console.log('aSomething went wrong', e);
-//     }
-// }
-
-// MutationButton.addEventListener('click', (evt) => {
-//     addTodo().then((evt) => {
-//         MutationResult.innerHTML += `<p>${evt.data.createTodo.name} - ${evt.data.createTodo.description}</p>`;
-//     });
-// });
 async function fetchCountTodos() {
     try {
-        var values=[];
-        for(var i=0;i<5;i++){
+        var values = {
+            "Bottle": 0,
+            "Can": 0,
+            "Bin": 0,
+            "Burnable": 0,
+            "Other": 0
+        };
+        for(let key in values){
+            console.log('key:', key);
             const response = await client.graphql({
                 query: listTodos,
                 variables: {
-                    filter: {name:{ eq: 'Use AppSync' }},
+                    filter: {label:{ eq: key }},
                     limit: null, // 取得するアイテムの数を制限する場合
                     nextToken: null // ページネーションのためのトークンなど
                   }
@@ -101,79 +71,110 @@ async function fetchCountTodos() {
             });
             const items = response.data.listTodos.items;
             // alert(items.length);
-            values[i]=items.length;
+            values[key]=items.length;
         }
-            // const input ={
-            //     name: { eq: 'Use AppSync' }
-            // }
-            // const response = await client.graphql({
-            //     query: listTodos,
-            //     variables: {
-            //         filter: input,
-            //         limit: null, // 取得するアイテムの数を制限する場合
-            //         nextToken: null // ページネーションのためのトークンなど
-            //     }
-            // });
         
-            // const items = response.data.listTodos.items;
-            // alert(items.length);
-            // values[i]=[items.length];
-            // response.data.listTodos.items.map((todo, i) => {
-            //     QueryResult.innerHTML += `<p>${todo.name} - ${todo.description}</p>`;
-            // });
         
         return values;
         
     } catch (e) {
-        console.log('Something went wrong', e);
+        console.log('aSomething went wrong', e);
     }
 }
-const val = fetchCountTodos();
-val.then(result => {
-    console.log(result)
-    var pieData = [
-        {
-            value: result[0],            // 値
-            color:"#F7464A",       // 色
-            highlight: "#FF5A5E",  // マウスが載った際の色
-            label: "ペットボトル"        // ラベル
-        },
-        {
-            value: result[1],
-            color: "#41C44E",
-            highlight: "#6CD173",
-            label: "カン"
-        },
-        {
-            value: result[2],
-            color: "#FDB45C",
-            highlight: "#FFC870",
-            label: "ビン"
-        },
-        {
-            value: result[3],
-            color: "#AA49B8",
-            highlight: "#C583CF",
-            label: "可燃ごみ"
-        },
-        {
-            value: result[4],
-            color: "#4D5360",
-            highlight: "#616774",
-            label: "その他"
-        }
+
+// MutationButton.addEventListener('click', (evt) => {
+//     addTodo().then((evt) => {
+//         MutationResult.innerHTML += `<p>${evt.data.createTodo.name} - ${evt.data.createTodo.description}</p>`;
+//     });
+// });
+// async function fetchCountTodos() {
+//     try {
+//         var values=[];
+//         for(var i=0;i<5;i++){
+//             const response = await client.graphql({
+//                 query: listTodos,
+//                 variables: {
+//                     filter: {name:{ eq: 'Use AppSync' }},
+//                     limit: null, // 取得するアイテムの数を制限する場合
+//                     nextToken: null // ページネーションのためのトークンなど
+//                   }
+
+//             });
+//             const items = response.data.listTodos.items;
+//             // alert(items.length);
+//             values[i]=items.length;
+//         }
+//             // const input ={
+//             //     name: { eq: 'Use AppSync' }
+//             // }
+//             // const response = await client.graphql({
+//             //     query: listTodos,
+//             //     variables: {
+//             //         filter: input,
+//             //         limit: null, // 取得するアイテムの数を制限する場合
+//             //         nextToken: null // ページネーションのためのトークンなど
+//             //     }
+//             // });
         
-    ];
-    console.log(pieData);
-    function DrawPieChart() {
-    var ctx = document.getElementById("graph-area").getContext("2d");
-    window.myPie = new Chart(ctx).Pie(pieData);
-    };      
-    DrawPieChart();
+//             // const items = response.data.listTodos.items;
+//             // alert(items.length);
+//             // values[i]=[items.length];
+//             // response.data.listTodos.items.map((todo, i) => {
+//             //     QueryResult.innerHTML += `<p>${todo.name} - ${todo.description}</p>`;
+//             // });
+        
+//         return values;
+        
+//     } catch (e) {
+//         console.log('Something went wrong', e);
+//     }
+// }
+// const val = fetchCountTodos();
+// val.then(result => {
+//     console.log(result)
+//     var pieData = [
+//         {
+//             value: result[0],            // 値
+//             color:"#F7464A",       // 色
+//             highlight: "#FF5A5E",  // マウスが載った際の色
+//             label: "ペットボトル"        // ラベル
+//         },
+//         {
+//             value: result[1],
+//             color: "#41C44E",
+//             highlight: "#6CD173",
+//             label: "カン"
+//         },
+//         {
+//             value: result[2],
+//             color: "#FDB45C",
+//             highlight: "#FFC870",
+//             label: "ビン"
+//         },
+//         {
+//             value: result[3],
+//             color: "#AA49B8",
+//             highlight: "#C583CF",
+//             label: "可燃ごみ"
+//         },
+//         {
+//             value: result[4],
+//             color: "#4D5360",
+//             highlight: "#616774",
+//             label: "その他"
+//         }
+        
+//     ];
+//     console.log(pieData);
+//     function DrawPieChart() {
+//     var ctx = document.getElementById("graph-area").getContext("2d");
+//     window.myPie = new Chart(ctx).Pie(pieData);
+//     };      
+//     DrawPieChart();
     
-}).catch(error => {
-    console.error('Error:', error);
-});
+// }).catch(error => {
+//     console.error('Error:', error);
+// });
 
 // PrintButton.addEventListener('click', (evt) => {
  
@@ -231,51 +232,51 @@ function subscribeToNewTodos() {
 }
 
 // console.log('0');
-// const val = fetchCountTodos();
-// val.then(result => {
-//     console.warn('変数 value の値は:', result);
-//     var pieData = [
-//         {
-//             value: result["Bottle"],
-//             color: "#F7464A",
-//             highlight: "#FF5A5E",
-//             label: "ペットボトル"
-//         },
-//         {
-//             value: result["Can"],
-//             color: "#41C44E",
-//             highlight: "#6CD173",
-//             label: "カン"
-//         },
-//         {
-//             value: result["Bin"],
-//             color: "#FDB45C",
-//             highlight: "#FFC870",
-//             label: "ビン"
-//         },
-//         {
-//             value: result["Burnable"],
-//             color: "#AA49B8",
-//             highlight: "#C583CF",
-//             label: "可燃ごみ"
-//         },
-//         {
-//             value: result["Other"],
-//             color: "#4D5360",
-//             highlight: "#616774",
-//             label: "その他"
-//         }
-//     ];
-//     console.log(pieData);
-//     function DrawPieChart() {
-//     var ctx = document.getElementById("graph-area").getContext("2d");
-//     window.myPie = new Chart(ctx).Pie(pieData);
-//     };      
-//     DrawPieChart();
+const val = fetchCountTodos();
+val.then(result => {
+    console.warn('変数 value の値は:', result);
+    var pieData = [
+        {
+            value: result["Bottle"],
+            color: "#F7464A",
+            highlight: "#FF5A5E",
+            label: "ペットボトル"
+        },
+        {
+            value: result["Can"],
+            color: "#41C44E",
+            highlight: "#6CD173",
+            label: "カン"
+        },
+        {
+            value: result["Bin"],
+            color: "#FDB45C",
+            highlight: "#FFC870",
+            label: "ビン"
+        },
+        {
+            value: result["Burnable"],
+            color: "#AA49B8",
+            highlight: "#C583CF",
+            label: "可燃ごみ"
+        },
+        {
+            value: result["Other"],
+            color: "#4D5360",
+            highlight: "#616774",
+            label: "その他"
+        }
+    ];
+    console.log(pieData);
+    function DrawPieChart() {
+    var ctx = document.getElementById("graph-area").getContext("2d");
+    window.myPie = new Chart(ctx).Pie(pieData);
+    };      
+    DrawPieChart();
     
-// }).catch(error => {
-//     console.error('Errorghjkl;:', error);
-// });
+}).catch(error => {
+    console.error('Errorghjkl;:', error);
+});
 
 
 // var pieData = [
