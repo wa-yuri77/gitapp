@@ -295,7 +295,7 @@ function doReload() {
 window.addEventListener('load', function () {
 
     // ページ表示完了した5秒後にリロード
-    setTimeout(doReload, 10000);
+    setTimeout(doReload, 60000);
 });
 
 
