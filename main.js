@@ -33,22 +33,22 @@ async function addTodo() {
     });
 }
 
-async function fetchTodos() {
-    try {
-        const response = await client.graphql({
-            query: listTodos
-        });
+// async function fetchTodos() {
+//     try {
+//         const response = await client.graphql({
+//             query: listTodos
+//         });
 
-        response.data.listTodos.items.map((todo, i) => {
-            console.log('name:', todo.name);
-            console.log('description:', todo.description);
-            QueryResult.innerHTML += `<p>${todo.name} - ${todo.description}</p>-${i}`;
-        });
-    } catch (e) {
-        console.log('aaSomething went wrong', e);
-    }
-}
-// グラフの中身
+//         response.data.listTodos.items.map((todo, i) => {
+//             console.log('name:', todo.name);
+//             console.log('description:', todo.description);
+//             QueryResult.innerHTML += `<p>${todo.name} - ${todo.description}</p>-${i}`;
+//         });
+//     } catch (e) {
+//         console.log('aaSomething went wrong', e);
+//     }
+// }
+// // グラフの中身
 async function fetchCountTodos() {
     try {
         var values = {
@@ -110,11 +110,11 @@ async function fetchCountTodos() {
     }
 }
 
-MutationButton.addEventListener('click', (evt) => {
-    addTodo().then((evt) => {
-        MutationResult.innerHTML += `<p>${evt.data.createTodo.name} - ${evt.data.createTodo.description}</p>`;
-    });
-});
+// MutationButton.addEventListener('click', (evt) => {
+//     addTodo().then((evt) => {
+//         MutationResult.innerHTML += `<p>${evt.data.createTodo.name} - ${evt.data.createTodo.description}</p>`;
+//     });
+// });
 // async function fetchCountTodos() {
 //     try {
 //         var values=[];
