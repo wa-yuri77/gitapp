@@ -133,31 +133,31 @@ val.then(result => {
     const sum=result["Bottle"]+result["Can"]+result["Bin"]+result["Burnable"]+result["Other"]
     var pieData = [
         {
-            value: Math.round(result["Bottle"]/sum),
+            value: Math.round(result["Bottle"]/sum*100),
             color: "#F7464A",
             highlight: "#FF5A5E",
             label: "ペットボトル"
         },
         {
-            value: Math.round(result["Can"]/sum),
+            value: Math.round(result["Can"]/sum*100),
             color: "#41C44E",
             highlight: "#6CD173",
             label: "カン"
         },
         {
-            value: Math.round(result["Bin"]/sum),
+            value: Math.round(result["Bin"]/sum*100),
             color: "#FDB45C",
             highlight: "#FFC870",
             label: "ビン"
         },
         {
-            value: Math.round(result["Burnable"]/sum),
+            value: Math.round(result["Burnable"]/sum*100),
             color: "#AA49B8",
             highlight: "#C583CF",
             label: "可燃ごみ"
         },
         {
-            value: Math.round(result["Other"]/sum),
+            value: Math.round(result["Other"]/sum*100),
             color: "#4D5360",
             highlight: "#616774",
             label: "その他"
