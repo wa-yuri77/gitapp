@@ -98,7 +98,7 @@ hr {
   margin-right: 10px; /* 要素間の間隔 */
   display: inline-block; /* インラインブロックとして表示 */
 }
-.canvas-parent {
+.canvas-parent{
   width: 100%;
   margin: 0 auto;
   text-align: center;
