@@ -52,35 +52,35 @@ hr {
   width: 3px;
   height: 3px;
   background: #F7464A;
-  font-size: 4vw;
+  font-size: 1vw;
   color: black;
 }
 .square_Can {
   width: 3px;
   height: 3px;
   background: #41C44E;
-  font-size: 4vw;
+  font-size: 1vw;
   color: black;
 }
 .square_Bin {
   width: 3px;
   height: 3px;
   background: #FDB45C;
-  font-size: 4vw;
+  font-size: 1vw;
   color: black;
 }
 .square_Burnable {
   width: 3px;
   height: 3px;
   background: #AA49B8;
-  font-size: 4vw;
+  font-size: 1vw;
   color: black;
 }
 .square_Other {
   width: 3px;
   height: 3px;
   background: #4D5360;
-  font-size: 4vw;
+  font-size: 1vw;
   color: black;
 }
 .container {
