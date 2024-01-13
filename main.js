@@ -197,15 +197,21 @@ window.addEventListener('load', function () {
     setTimeout(doReload, 60000);
 });
 
-var windowWidth = $(window).width();
-var windowSm = 640;
-if (windowWidth <= windowSm) {
-    //横幅640px以下のとき（つまりスマホ時）に行う処理を書く
-    appBody.style.width = "400px";
-} else {
-    //横幅640px超のとき（タブレット、PC）に行う処理を書く
-    appBody.style.width = '1200px';
-}
+
+document.addEventListener('DOMContentLoaded', function() {
+    var windowWidth = $(window).width();
+    console.log(windowWidth);
+    var windowSm = 640;
+    var appBody = document.querySelector('.app-body');
+    
+    if (windowWidth <= windowSm) {
+        //横幅640px以下のとき（つまりスマホ時）に行う処理を書く
+        appBody.style.width = "400px";
+    } else {
+        //横幅640px超のとき（タブレット、PC）に行う処理を書く
+        appBody.style.width = '1200px';
+    }
+});
 
 
 subscribeToNewTodos();
