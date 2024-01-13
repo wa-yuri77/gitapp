@@ -73,7 +73,7 @@ async function fetchCountTodos() {
                         }
                     `,
                 });
-                alert(response);
+                // alert(response);
                 const items = response.data.listTodos.items;
                 values[key]=items.length;
                 alert(values[key]);
