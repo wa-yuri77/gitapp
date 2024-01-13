@@ -28,7 +28,7 @@ hr {
   box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.3);
 }
 .app-body {
-  width: 1200px;
+  width: auto;
   margin: 0 auto;
   text-align: center;
 }
@@ -47,35 +47,35 @@ hr {
   width: 3px;
   height: 3px;
   background: #F7464A;
-  font-size: 5px;
+  font-size: 15px;
   color: black;
 }
 .square_Can {
   width: 3px;
   height: 3px;
   background: #41C44E;
-  font-size: 5px;
+  font-size: 15px;
   color: black;
 }
 .square_Bin {
   width: 3px;
   height: 3px;
   background: #FDB45C;
-  font-size: 5px;
+  font-size: 15px;
   color: black;
 }
 .square_Burnable {
   width: 3px;
   height: 3px;
   background: #AA49B8;
-  font-size: 5px;
+  font-size: 15px;
   color: black;
 }
 .square_Other {
   width: 3px;
   height: 3px;
   background: #4D5360;
-  font-size: 5px;
+  font-size: 15px;
   color: black;
 }
 .container {
