@@ -163,6 +163,7 @@ val.then(result => {
     };      
     DrawPieChart();
     
+    
 }).catch(error => {
     console.error('Errorghjkl;:', error);
     
