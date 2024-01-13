@@ -27,6 +27,11 @@ hr {
   padding: 3em 0 3em 0;
   box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.3);
 }
+.graph{
+  width: 100%;
+  margin: 0px;
+  padding: 0px;
+}
 .app-body {
   width: 100%;
   margin: 0 auto;
@@ -92,4 +97,9 @@ hr {
   flex: 1; /* 横幅を均等に分配 */
   margin-right: 10px; /* 要素間の間隔 */
   display: inline-block; /* インラインブロックとして表示 */
+}
+.canvas-parent {
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
 }
