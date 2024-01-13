@@ -99,7 +99,7 @@ hr {
   display: inline-block; /* インラインブロックとして表示 */
 }
 .canvas-parent{
-  width: 100%;
+  width: 90%;
   margin: 0 auto;
   text-align: center;
 }
