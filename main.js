@@ -122,7 +122,7 @@ function subscribeToNewTodos() {
 
 function Printfunction(Data) {
     for(var key in Data){
-        PrintResult.innerHTML+=`<div class="square_${key}">${key}:${Data[key]}</div>`;
+        PrintResult.innerHTML+=`<div class="square_${key}">${key}:${Data[key]}個</div>`;
     }
 }
 
