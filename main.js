@@ -245,15 +245,15 @@ window.addEventListener('load', function () {
 //     // ウィンドウのリサイズ時にも実行
 //     window.addEventListener('resize', updateWidth);
 // });
-let canvasParent = document.getElementById("canvasParent");
-let canvas = document.getElementById("canvas");
+// let canvasParent = document.getElementById("canvasParent");
+// let canvas = document.getElementById("canvas");
 
-let resize = () => {
-    canvas.width = canvasParent.clientWidth;
-    canvas.height = canvasParent.clientHeight;
-};
+// let resize = () => {
+//     canvas.width = canvasParent.clientWidth;
+//     canvas.height = canvasParent.clientHeight;
+// };
 
-setInterval(() => resize(), 0);
+// setInterval(() => resize(), 0);
 
 
 subscribeToNewTodos();
