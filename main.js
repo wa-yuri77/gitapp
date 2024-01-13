@@ -122,7 +122,14 @@ function subscribeToNewTodos() {
 
 function Printfunction(Data) {
     for(var key in Data){
-        PrintResult.innerHTML+=`<div class="square_${key}">${key}:${Data[key]}個</div>`;
+        var names = {
+            'Bottle': 'ペットボトル',
+            'Can': 'カン',
+            'Bin': 'ビン',
+            'Burnable': '可燃ごみ',
+            'Other': 'その他'
+        };
+        PrintResult.innerHTML+=`<div class="square_${key}">${names[key]}:${Data[key]}個</div>`;
     }
 }
 
