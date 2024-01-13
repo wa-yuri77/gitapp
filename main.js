@@ -63,16 +63,16 @@ async function fetchCountTodos() {
             console.log(key);
             if(key=='Other'){
                 const response = await client.graphql({
-                                    query: `
-                                            query MyQuery() {
-                                                listTodos() {
-                                                    items {
-                                                        label
-                                                    }
-                                                }
-                                            }
-                                        `,
-                                    });
+                    query: `
+                        query MyQuery {
+                            listTodos {
+                                items {
+                                    label
+                                }
+                            }
+                        }
+                    `,
+                });
                 alert(response);
                 const items = response.data.listTodos.items;
                 values[key]=items.length;
