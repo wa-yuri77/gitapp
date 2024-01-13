@@ -198,20 +198,48 @@ window.addEventListener('load', function () {
 });
 
 
-document.addEventListener('DOMContentLoaded', function() {
-    var windowWidth = $(window).width();
-    console.log(windowWidth);
+// document.addEventListener('DOMContentLoaded', function() {
+//     var windowWidth = $(window).width();
+//     console.log(windowWidth);
+//     var windowSm = 640;
+//     var appBody = document.querySelector('.app-body');
+
+//     if (windowWidth <= windowSm) {
+//         //横幅640px以下のとき（つまりスマホ時）に行う処理を書く
+//         appBody.style.width = "400px";
+//     } else {
+//         //横幅640px超のとき（タブレット、PC）に行う処理を書く
+//         appBody.style.width = '1200px';
+//     }
+// });
+
+document.addEventListener("load", function() {
     var windowSm = 640;
     var appBody = document.querySelector('.app-body');
-    
-    if (windowWidth <= windowSm) {
-        //横幅640px以下のとき（つまりスマホ時）に行う処理を書く
-        appBody.style.width = "400px";
-    } else {
-        //横幅640px超のとき（タブレット、PC）に行う処理を書く
-        appBody.style.width = '1200px';
+
+    function updateWidth() {
+        var windowWidth = window.outerWidth;
+
+        if (windowWidth <= windowSm) {
+            // 横幅640px以下のとき（つまりスマホ時）に行う処理を書く
+            if (appBody) {
+                appBody.style.width = "400px";
+            }
+        } else {
+            // 横幅640px超のとき（タブレット、PC）に行う処理を書く
+            if (appBody) {
+                appBody.style.width = '1200px';
+            }
+        }
     }
+
+    // 初回実行
+    updateWidth();
+
+    // ウィンドウのリサイズ時にも実行
+    window.addEventListener('resize', updateWidth);
 });
+
 
 
 subscribeToNewTodos();
