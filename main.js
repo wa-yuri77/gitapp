@@ -129,7 +129,7 @@ function Printfunction(Data) {
             'Burnable': '可燃ごみ',
             'Other': 'その他'
         };
-        PrintResult.innerHTML+=`<div class="square_${key}">${names[key]}:${Data[key]}個</div>`;
+        PrintResult.innerHTML+=`<div class="square_${key}">${names[key]}<br>${Data[key]}個</div>`;
     }
 }
 
@@ -197,6 +197,15 @@ window.addEventListener('load', function () {
     setTimeout(doReload, 60000);
 });
 
+var windowWidth = $(window).width();
+var windowSm = 640;
+if (windowWidth <= windowSm) {
+    //横幅640px以下のとき（つまりスマホ時）に行う処理を書く
+    appBody.style.width = "400px";
+} else {
+    //横幅640px超のとき（タブレット、PC）に行う処理を書く
+    appBody.style.width = '1200px';
+}
 
 
 subscribeToNewTodos();
