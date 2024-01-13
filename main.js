@@ -61,26 +61,36 @@ async function fetchCountTodos() {
         for(var key in values){
             // alert(key);
             console.log(key);
-            const response = await client.graphql({
-                query: `
-                    query MyQuery($key: String) {
-                        listTodos(filter: { label: { eq: $key } }) {
-                            items {
-                                label
+            if(key=='Other'){
+                const response = await client.graphql({
+                                    query: listTodos,
+                                    items: id
+                                    });
+                const items = response.data.listTodos.items;
+                values[key]=items.length;
+            }
+            else{
+                const response = await client.graphql({
+                    query: `
+                        query MyQuery($key: String) {
+                            listTodos(filter: { label: { eq: $key } }) {
+                                items {
+                                    label
+                                }
                             }
                         }
-                    }
-                `,
-                variables: {
-                    key: key, // "Bottle" に対応する変数を宣言することで、この変数をクエリ内で利用できるようになります
-                },
- 
-            });
-            const items = response.data.listTodos.items;
-            // alert(response.data.listTodos.items.length);
-            values[key]=items.length;
+                    `,
+                    variables: {
+                        key: key, // "Bottle" に対応する変数を宣言することで、この変数をクエリ内で利用できるようになります
+                    },
+     
+                });
+                const items = response.data.listTodos.items;
+                // alert(response.data.listTodos.items.length);
+                values[key]=items.length;
+            }
         }
-        
+        values['Other']=values['Other']-values['Bottle']-values['Can']-values['Bin']-values['Burnable'];
         
         return values;
         
@@ -295,7 +305,7 @@ function doReload() {
 window.addEventListener('load', function () {
 
     // ページ表示完了した5秒後にリロード
-    setTimeout(doReload, 10000);
+    setTimeout(doReload, 60000);
 });
 
 
