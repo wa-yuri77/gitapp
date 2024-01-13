@@ -129,34 +129,35 @@ function Printfunction(Data) {
 console.log('0');
 const val = fetchCountTodos();
 val.then(result => {
-    console.warn('変数 value の値は:', result);
+    // console.warn('変数 value の値は:', result);
+    const sum=result["Bottle"]+result["Can"]+result["Bin"]+result["Burnable"]+result["Other"]
     var pieData = [
         {
-            value: result["Bottle"],
+            value: Math.round(result["Bottle"]/sum),
             color: "#F7464A",
             highlight: "#FF5A5E",
             label: "ペットボトル"
         },
         {
-            value: result["Can"],
+            value: Math.round(result["Can"]/sum),
             color: "#41C44E",
             highlight: "#6CD173",
             label: "カン"
         },
         {
-            value: result["Bin"],
+            value: Math.round(result["Bin"]/sum),
             color: "#FDB45C",
             highlight: "#FFC870",
             label: "ビン"
         },
         {
-            value: result["Burnable"],
+            value: Math.round(result["Burnable"]/sum),
             color: "#AA49B8",
             highlight: "#C583CF",
             label: "可燃ごみ"
         },
         {
-            value: result["Other"],
+            value: Math.round(result["Other"]/sum),
             color: "#4D5360",
             highlight: "#616774",
             label: "その他"
