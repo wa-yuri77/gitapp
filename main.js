@@ -64,7 +64,7 @@ async function fetchCountTodos() {
             if(key=='Other'){
                 const response = await client.graphql({
                                     query: listTodos,
-                                    items: id
+                                    // items: id
                                     });
                 const items = response.data.listTodos.items;
                 values[key]=items.length;
@@ -92,6 +92,7 @@ async function fetchCountTodos() {
         }
         values['Other']=values['Other']-values['Bottle']-values['Can']-values['Bin']-values['Burnable'];
         
+        console.log(values);
         return values;
         
     } catch (e) {
