@@ -76,7 +76,7 @@ async function fetchCountTodos() {
                 // alert(response);
                 const items = response.data.listTodos.items;
                 values[key]=items.length;
-                alert(values[key]);
+                // alert(values[key]);
             }
             else{
                 const response = await client.graphql({
@@ -97,7 +97,7 @@ async function fetchCountTodos() {
                 const items = response.data.listTodos.items;
                 // alert(response.data.listTodos.items.length);
                 values[key]=items.length;
-                alert(values[key]);
+                // alert(values[key]);
             }
         }
         values['Other']=values['Other']-values['Bottle']-values['Can']-values['Bin']-values['Burnable'];
@@ -180,6 +180,8 @@ window.addEventListener('load', function () {
     // ページ表示完了した5秒後にリロード
     setTimeout(doReload, 60000);
 });
+
+
 
 subscribeToNewTodos();
 // fetchCountTodos();
