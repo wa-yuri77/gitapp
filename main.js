@@ -120,6 +120,12 @@ function subscribeToNewTodos() {
     });
 }
 
+function Printfunction(Data) {
+    for(var key in Data){
+        PrintResult.innerHTML+=`<div class="square_${key}">${key}:${Data[key]}</div>`;
+    }
+}
+
 console.log('0');
 const val = fetchCountTodos();
 val.then(result => {
@@ -162,6 +168,7 @@ val.then(result => {
     window.myPie = new Chart(ctx).Pie(pieData);
     };      
     DrawPieChart();
+    Printfunction(result);
     
     
 }).catch(error => {

@@ -43,27 +43,27 @@ hr {
 .app-body button:hover {
   opacity: 0.8;
 }
-.square_PET {
+.square_Bottle {
   width: 3px;
   height: 3px;
   background: #F7464A;
 }
-.square_CAN {
+.square_Can {
   width: 3px;
   height: 3px;
   background: #41C44E;
 }
-.square_BIN {
+.square_Bin {
   width: 3px;
   height: 3px;
   background: #FDB45C;
 }
-.square_BURNABLE {
+.square_Burnable {
   width: 3px;
   height: 3px;
   background: #AA49B8;
 }
-.square_OTHER {
+.square_Other {
   width: 3px;
   height: 3px;
   background: #4D5360;
@@ -74,11 +74,11 @@ hr {
   width: 100%;
 }
 
-.square_PET,
-.square_CAN,
-.square_BIN,
-.square_BURNABLE,
-.square_OTHER {
+.square_Bottle,
+.square_Can,
+.square_Bin,
+.square_Burnable,
+.square_Other {
   flex: 1; /* 横幅を均等に分配 */
   margin-right: 10px; /* 要素間の間隔 */
   display: inline-block; /* インラインブロックとして表示 */
