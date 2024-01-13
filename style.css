@@ -50,37 +50,37 @@ hr {
 }
 .square_Bottle {
   width: 3px;
-  height: 3px;
+  height: 10px;
   background: #F7464A;
-  font-size: 1vw;
+  font-size: 2vw;
   color: black;
 }
 .square_Can {
   width: 3px;
-  height: 3px;
+  height: 10px;
   background: #41C44E;
-  font-size: 1vw;
+  font-size: 2vw;
   color: black;
 }
 .square_Bin {
   width: 3px;
-  height: 3px;
+  height: 10px;
   background: #FDB45C;
-  font-size: 1vw;
+  font-size: 2vw;
   color: black;
 }
 .square_Burnable {
   width: 3px;
-  height: 3px;
+  height: 10px;
   background: #AA49B8;
-  font-size: 1vw;
+  font-size: 2vw;
   color: black;
 }
 .square_Other {
   width: 3px;
-  height: 3px;
+  height: 10px;
   background: #4D5360;
-  font-size: 1vw;
+  font-size: 2vw;
   color: black;
 }
 .container {
