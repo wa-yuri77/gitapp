@@ -129,7 +129,7 @@ function Printfunction(Data) {
             'Burnable': '可燃ごみ',
             'Other': 'その他'
         };
-        PrintResult.innerHTML+=`<div class="square_${key}">${names[key]}<br>${Data[key]}個</div>`;
+        PrintResult.innerHTML+=`<div class="square_${key}"><br>${names[key]}<br>${Data[key]}個</div>`;
     }
 }
 
