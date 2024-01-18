@@ -9,8 +9,7 @@ const app = Vue.createApp({
   methods:{
 //モーダルウィンドウを開く要素をクリックしたら
     open: function(){
-      this.show = true
-      this.path = '/Users/shoichiro-u/Desktop/Vue-dustbox/graph.gif';
+      window.location.href = "https://main.d2v7gdb6u9dfdx.amplifyapp.com/";
     },
     open2: function(){
       this.show = true
