@@ -3,14 +3,14 @@
     <style>
         body {
            background-color: #486d46;            /* 背景色 */
-           background-image: url("stadium2.png"); /* 画像 */
+           background-image: url("https://github.com/wa-yuri77/gitapp/blob/main/stadium2.png"); /* 画像 */
            background-repeat: no-repeat;           /*繰り返し*/
            background-size: contain;               /* 全画面 */
            background-attachment: fixed;         /* 固定 */
            background-position: center center;   /* 縦横中央 */
         }
         .position{
-            background-color: red;
+            background-color: white;
         }
         /* モーダルウィンドウ要素 */
         .modal_contents {
@@ -56,12 +56,19 @@
           width="90" height="65"
           style="position:absolute;top:500px;left:400px;"
           />
+          <img v-bind:src="path" alt="ロゴ画像"
+          class="position"
+          v-on:click="open2"
+          width="90" height="65"
+          style="position:absolute;top:490px;left:700px;"
+          />
         <!--  モーダルウィンドウ  -->
             <div v-show="show" class="modal_contents">
         <!-- モーダルウィンドウの背景 -->
             <div v-on:click="close" class="modal_contents_bg"></div>
         <!--   モーダルウィンドウの中身   -->
             <img v-bind:src="path" alt="グラフ" class="modal_contents_wrap"/>
+            <img v-bind:src="path2" alt="グラフ" class="modal_contents_wrap">
         <!--   モーダルウィンドウを閉じる   -->
                 <div v-on:click="close" class="modal_close_btn">閉じる</div>
             </div>
