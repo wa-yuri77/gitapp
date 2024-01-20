@@ -54,7 +54,7 @@ async function fetchCountTodos() {
         var values = {
             'bottle': 1,
             'can': 1,
-            'bin': 1,
+            'glass': 1,
             'burnable': 1,
             'other': 1
         };
@@ -100,7 +100,7 @@ async function fetchCountTodos() {
                 // alert(values[key]);
             }
         }
-        values['other']=values['other']-values['bottle']-values['can']-values['bin']-values['burnable'];
+        values['other']=values['other']-values['bottle']-values['can']-values['glass']-values['burnable'];
         
         console.log(values);
         return values;
@@ -125,7 +125,7 @@ function Printfunction(Data) {
         var names = {
             'bottle': 'ペットボトル',
             'can': 'カン',
-            'bin': 'ビン',
+            'glass': 'ビン',
             'burnable': '可燃ごみ',
             'other': 'その他'
         };
@@ -137,7 +137,7 @@ console.log('0');
 const val = fetchCountTodos();
 val.then(result => {
     // console.warn('変数 value の値は:', result);
-    const sum=result["bottle"]+result["can"]+result["bin"]+result["burnable"]+result["other"]
+    const sum=result["bottle"]+result["can"]+result["glass"]+result["burnable"]+result["other"]
     var pieData = [
         {
             value: Math.round(result["bottle"]/sum*100),
@@ -152,7 +152,7 @@ val.then(result => {
             label: "カン"
         },
         {
-            value: Math.round(result["bin"]/sum*100),
+            value: Math.round(result["glass"]/sum*100),
             color: "#FDB45C",
             highlight: "#FFC870",
             label: "ビン"
