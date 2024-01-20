@@ -3,7 +3,7 @@ const app = Vue.createApp({
     return {
 //デフォルトはモーダルウィンドウを閉じる
     show: false,
-    path: '/Users/shoichiro-u/Desktop/Vue-dustbox/dustbox.gif'
+    path: 'https://github.com/wa-yuri77/gitapp/blob/main/dustbox.gif?raw=true'
     }
   },
   methods:{
@@ -18,7 +18,7 @@ const app = Vue.createApp({
 //モーダルウィンドウを閉じる要素をクリックしたら
     close: function(){
       this.show = false
-      this.path = '/Users/shoichiro-u/Desktop/Vue-dustbox/dustbox.gif';
+      this.path = 'https://github.com/wa-yuri77/gitapp/blob/main/dustbox.gif?raw=true';
     },
   }
 });
