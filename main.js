@@ -52,16 +52,16 @@ async function addTodo() {
 async function fetchCountTodos() {
     try {
         var values = {
-            'Bottle': 1,
-            'Can': 1,
-            'Bin': 1,
-            'Burnable': 1,
-            'Other': 1
+            'bottle': 1,
+            'can': 1,
+            'bin': 1,
+            'burnable': 1,
+            'other': 1
         };
         for(var key in values){
             // alert(key);
             console.log(key);
-            if(key=='Other'){
+            if(key=='other'){
                 const response = await client.graphql({
                     query: `
                         query MyQuery {
@@ -100,7 +100,7 @@ async function fetchCountTodos() {
                 // alert(values[key]);
             }
         }
-        values['Other']=values['Other']-values['Bottle']-values['Can']-values['Bin']-values['Burnable'];
+        values['other']=values['other']-values['bottle']-values['can']-values['bin']-values['burnable'];
         
         console.log(values);
         return values;
@@ -123,11 +123,11 @@ function subscribeToNewTodos() {
 function Printfunction(Data) {
     for(var key in Data){
         var names = {
-            'Bottle': 'ペットボトル',
-            'Can': 'カン',
-            'Bin': 'ビン',
-            'Burnable': '可燃ごみ',
-            'Other': 'その他'
+            'bottle': 'ペットボトル',
+            'can': 'カン',
+            'bin': 'ビン',
+            'burnable': '可燃ごみ',
+            'other': 'その他'
         };
         PrintResult.innerHTML+=`<div class="square_${key}"><br>${names[key]}<br>${Data[key]}個</div>`;
     }
@@ -137,34 +137,34 @@ console.log('0');
 const val = fetchCountTodos();
 val.then(result => {
     // console.warn('変数 value の値は:', result);
-    const sum=result["Bottle"]+result["Can"]+result["Bin"]+result["Burnable"]+result["Other"]
+    const sum=result["bottle"]+result["can"]+result["bin"]+result["burnable"]+result["other"]
     var pieData = [
         {
-            value: Math.round(result["Bottle"]/sum*100),
+            value: Math.round(result["bottle"]/sum*100),
             color: "#F7464A",
             highlight: "#FF5A5E",
             label: "ペットボトル"
         },
         {
-            value: Math.round(result["Can"]/sum*100),
+            value: Math.round(result["can"]/sum*100),
             color: "#41C44E",
             highlight: "#6CD173",
             label: "カン"
         },
         {
-            value: Math.round(result["Bin"]/sum*100),
+            value: Math.round(result["bin"]/sum*100),
             color: "#FDB45C",
             highlight: "#FFC870",
             label: "ビン"
         },
         {
-            value: Math.round(result["Burnable"]/sum*100),
+            value: Math.round(result["burnable"]/sum*100),
             color: "#AA49B8",
             highlight: "#C583CF",
             label: "可燃ごみ"
         },
         {
-            value: Math.round(result["Other"]/sum*100),
+            value: Math.round(result["other"]/sum*100),
             color: "#4D5360",
             highlight: "#616774",
             label: "その他"
